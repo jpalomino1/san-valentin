@@ -1,134 +1,103 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>San Valentín</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>No</title>
 
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      background-color: #e75480;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: Arial, sans-serif;
-      overflow: hidden;
-      position: relative;
-    }
+<style>
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: #e75480;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    font-family: Arial;
+  }
 
-    .card {
-      background-color: #fff0f6;
-      padding: 40px;
-      border-radius: 25px;
-      text-align: center;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-      width: 420px;
-      z-index: 2;
-    }
+  .card {
+    background: #ffd6e8;
+    width: 100%;
+    max-width: 420px;
+    padding: 26px;
+    border-radius: 22px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
 
-    h1 {
-      color: #c2185b;
-      margin-bottom: 20px;
-    }
+  h1 {
+    font-size: 1.7rem;
+    margin-bottom: 12px;
+  }
 
-    img {
-      width: 230px;
-      border-radius: 15px;
-      margin-bottom: 20px;
-    }
+  img {
+    width: 100%;
+    max-width: 260px;
+    margin-bottom: 20px;
+  }
 
-    button {
-      border: none;
-      border-radius: 20px;
-      cursor: pointer;
-      position: absolute;
-      white-space: nowrap;
-    }
+  .buttons {
+    position: relative;
+    height: 200px;
+  }
 
-    #si {
-      background-color: #ff5fa2;
-      color: white;
-      font-size: 26px;
-      padding: 14px 38px;
-      left: 50%;
-      top: 75%;
-      transform: translate(-50%, -50%);
-      z-index: 3;
-    }
+  button {
+    font-size: 1.2rem;
+    padding: 14px 24px;
+    border-radius: 16px;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+  }
 
-    #no {
-      background-color: #ccc;
-      color: #333;
-      font-size: 18px;
-      padding: 10px 25px;
-      left: 35%;
-      top: 90%;
-      z-index: 3;
-    }
-  </style>
+  #yes {
+    background: #ff4d6d;
+    color: white;
+    left: 20px;
+    bottom: 20px;
+  }
+
+  #no {
+    background: #bbb;
+    right: 20px;
+    bottom: 20px;
+  }
+</style>
 </head>
 
 <body>
 
-  <div class="card">
-    <h1 id="pregunta">¿Querés ser mi San Valentín?</h1>
+<div class="card">
+  <h1>¿Estás segura, Memi?</h1>
 
-    <img
-      src="https://media.tenor.com/Jh283xz0sAUAAAAM/nailong-nailong-dragon.gif"
-      alt="gif triste"
-    >
+  <img src="https://media.tenor.com/Jh283xz0sAUAAAAM/nailong-nailong-dragon.gif">
+
+  <div class="buttons">
+    <button id="yes" onclick="location.href='si.html'">Sí</button>
+    <button id="no">No</button>
   </div>
+</div>
 
-  <button id="si" onclick="aceptar()">Sí memita</button>
-  <button id="no" onclick="hacerTrampa()">No</button>
+<script>
+  const noBtn = document.getElementById("no");
+  const yesBtn = document.getElementById("yes");
 
-  <script>
-    let tamañoSi = 26;
-    let tamañoNo = 18;
-    let intentos = 0;
+  let size = 1;
 
-    const textosNo = [
-      "No",
-      "¿Estás segura, memi?",
-      "¿En serio, chancho?",
-      "Última oportunidad, no voy a rogarte."
-    ];
+  noBtn.addEventListener("click", () => {
+    const x = Math.random() * 220;
+    const y = Math.random() * 120;
 
-    function hacerTrampa() {
-      const botonSi = document.getElementById("si");
-      const botonNo = document.getElementById("no");
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
 
-      // Cambiar texto del botón NO
-      if (intentos < textosNo.length - 1) {
-        intentos++;
-        botonNo.textContent = textosNo[intentos];
-      }
-
-      // Agrandar el SÍ
-      tamañoSi += 16;
-      botonSi.style.fontSize = tamañoSi + "px";
-      botonSi.style.padding = (tamañoSi / 2) + "px " + tamañoSi + "px";
-
-      // Achicar el NO
-      tamañoNo -= 2;
-      botonNo.style.fontSize = tamañoNo + "px";
-      botonNo.style.padding = (tamañoNo / 2) + "px " + tamañoNo + "px";
-
-      // Mover el NO
-      botonNo.style.left = Math.random() * 70 + "%";
-      botonNo.style.top = Math.random() * 85 + "%";
-
-      // Última fase: casi invisible
-      if (intentos === textosNo.length - 1) {
-        botonNo.style.opacity = "0.3";
-      }
-    }
-
-    function aceptar() {
-      window.location.href = "si.html";
-    }
-  </script>
+    size += 0.2;
+    yesBtn.style.transform = `scale(${size})`;
+  });
+</script>
 
 </body>
 </html>
