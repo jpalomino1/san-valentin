@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>San Valentín</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background-color: #e75480;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .card {
+      background-color: #fff0f6;
+      padding: 40px;
+      border-radius: 25px;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      width: 420px;
+      z-index: 2;
+    }
+
+    h1 {
+      color: #c2185b;
+      margin-bottom: 20px;
+    }
+
+    img {
+      width: 230px;
+      border-radius: 15px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      position: absolute;
+      white-space: nowrap;
+    }
+
+    #si {
+      background-color: #ff5fa2;
+      color: white;
+      font-size: 26px;
+      padding: 14px 38px;
+      left: 50%;
+      top: 75%;
+      transform: translate(-50%, -50%);
+      z-index: 3;
+    }
+
+    #no {
+      background-color: #ccc;
+      color: #333;
+      font-size: 18px;
+      padding: 10px 25px;
+      left: 35%;
+      top: 90%;
+      z-index: 3;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+    <h1 id="pregunta">¿Querés ser mi San Valentín?</h1>
+
+    <img
+      src="https://media.tenor.com/Jh283xz0sAUAAAAM/nailong-nailong-dragon.gif"
+      alt="gif triste"
+    >
+  </div>
+
+  <button id="si" onclick="aceptar()">Sí memita</button>
+  <button id="no" onclick="hacerTrampa()">No</button>
+
+  <script>
+    let tamañoSi = 26;
+    let tamañoNo = 18;
+    let intentos = 0;
+
+    const textosNo = [
+      "No",
+      "¿Estás segura, memi?",
+      "¿En serio, chancho?",
+      "Última oportunidad, no voy a rogarte."
+    ];
+
+    function hacerTrampa() {
+      const botonSi = document.getElementById("si");
+      const botonNo = document.getElementById("no");
+
+      // Cambiar texto del botón NO
+      if (intentos < textosNo.length - 1) {
+        intentos++;
+        botonNo.textContent = textosNo[intentos];
+      }
+
+      // Agrandar el SÍ
+      tamañoSi += 16;
+      botonSi.style.fontSize = tamañoSi + "px";
+      botonSi.style.padding = (tamañoSi / 2) + "px " + tamañoSi + "px";
+
+      // Achicar el NO
+      tamañoNo -= 2;
+      botonNo.style.fontSize = tamañoNo + "px";
+      botonNo.style.padding = (tamañoNo / 2) + "px " + tamañoNo + "px";
+
+      // Mover el NO
+      botonNo.style.left = Math.random() * 70 + "%";
+      botonNo.style.top = Math.random() * 85 + "%";
+
+      // Última fase: casi invisible
+      if (intentos === textosNo.length - 1) {
+        botonNo.style.opacity = "0.3";
+      }
+    }
+
+    function aceptar() {
+      window.location.href = "si.html";
+    }
+  </script>
+
+</body>
+</html>

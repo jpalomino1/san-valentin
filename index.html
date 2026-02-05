@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>San Valentín</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background-color: #e75480; /* rosa más oscuro */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+    }
+
+    .card {
+      background-color: #fff0f6; /* card clarita */
+      padding: 40px;
+      border-radius: 25px;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      width: 350px;
+    }
+
+    h1 {
+      color: #c2185b; /* texto suave */
+      margin-bottom: 20px;
+    }
+
+    img {
+      width: 220px;
+      margin-bottom: 25px;
+    }
+
+    button {
+      font-size: 20px;
+      padding: 12px 30px;
+      margin: 10px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    .si {
+      background-color: #ff5fa2;
+      color: white;
+    }
+
+    .no {
+      background-color: #ccc;
+      color: #333;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+    <h1>¿Querés ser mi San Valentín?</h1>
+
+    <img src="https://media.tenor.com/ne_IOsKfwQwAAAAC/bonito-corazon.gif" alt="gif">
+
+    <br>
+
+    <button class="si" onclick="aceptar()">Sí</button>
+    <button class="no" onclick="rechazar()">No</button>
+  </div>
+
+  <script>
+    function aceptar() {
+      window.location.href = "si.html";
+    }
+
+    function rechazar() {
+      window.location.href = "no.html";
+    }
+  </script>
+
+</body>
+</html>
